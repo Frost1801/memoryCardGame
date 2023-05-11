@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*fa in modo che il padding non vada a modificare le dimensioni dell'elemento
+    quindi mantiene le dimensioni originali dell'elemento*/
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: azure;
+}
+.memory-board-row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory-board{
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    /*centro il div*/
+
+
+    /*optional*/
+    perspective: 1000px; /*Fa in modo che le carte abbiano una prospettiva*/
+}
+.card{
+    width: 25%;
+    height: 33.33%;
+    border: 1px solid black;
+    position: relative; /*Fa in modo che il position absolute delle carte si ancori a lui*/
+    /*optional*/
+    transform:scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+.card img{
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+}
+
+.card:active{
+    /*optional*/
+    transform: scale(0.9);
+    transition: transform 0.1s;
+}
+
+.front-face, .back-face{
+    position: absolute;
+    backface-visibility: hidden; /*fa in modo che la carta non sia visibile quando viene applicata la transizione*/
+}
+
+.front-face{
+    transform: rotateY(180deg);
+}
+
+.card.flip{
+    /*optional*/
+    transform: rotateY(180deg);
+}
+
+.restartButton{
+    margin: auto;
+}
+#restart{
+    font-size: 150%;
+}
